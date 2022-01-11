@@ -1,15 +1,19 @@
-version: 0.1
-slug: soft_ether_vpn_server
 name: SoftEther VPN Server
+version: 0.2
+slug: soft_ether_vpn_server
 description: SoftEther VPN Server for Home Assistant
-advanced: true
 arch:
   - armhf
   - armv7
   - amd64
-init: false # passt das?
-host_network: true
+
+boot: manual
+
+advanced: true
 stage: experimental
-startup: once # passt das?
+
+host_network: true
 privileged: 
   - NET_ADMIN
+
+#init: false
