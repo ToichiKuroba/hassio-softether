@@ -1,6 +1,6 @@
 # Home Assistant Add-on: SoftEther VPN Server
 
-A Homeassistant Plugin to run a Softether VPN server. For further Information to SoftEther see https://www.softether.org/.
+A Homeassistant Addon to run a Softether VPN server. For further Information to SoftEther see https://www.softether.org/.
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports armhf Architecture][armhf-shield]
