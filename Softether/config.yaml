@@ -1,5 +1,5 @@
 name: SoftEther VPN Server
-version: 0.2
+version: 0.3
 slug: soft_ether_vpn_server
 description: SoftEther VPN Server for Home Assistant
 url: "https://github.com/ToichiKuroba/hassio-softether"
@@ -8,11 +8,15 @@ arch:
   - armv7
   - amd64
 
-boot: manual
-
 advanced: true
-stage: experimental
-
 host_network: true
+map:
+  - config:rw
+  - share:rw
+options: 
+  config_dir: /config/softether
 privileged: 
   - NET_ADMIN
+schema:
+  config_dir: match(^\/(config|share))
+stage: experimental

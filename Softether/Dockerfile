@@ -12,11 +12,7 @@ RUN apt-get update \
     && cd /vpnserver \
     && make 
 
-WORKDIR /data
-
 # Copy root filesystem
 COPY rootfs /
 
-# RUN chmod a+x /etc/cont-init.d/vpnserver/02-softeter.sh
-
-CMD [ "/data/vpnserver/vpnserver", "execsvc" ]
+CMD [ "/vpnserver/vpnserver", "execsvc" ]
