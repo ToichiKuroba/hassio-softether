@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.4.0
+### Fixed 
+- Addon could not start due to https://developers.home-assistant.io/blog/2022/05/12/s6-overlay-base-images/
+
 ## 0.3.0
 ### Added 
 - config option for the config directory

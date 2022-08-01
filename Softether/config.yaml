@@ -1,5 +1,5 @@
 name: SoftEther VPN Server
-version: 0.3
+version: 0.4
 slug: soft_ether_vpn_server
 description: SoftEther VPN Server for Home Assistant
 url: "https://github.com/ToichiKuroba/hassio-softether"
@@ -20,3 +20,4 @@ privileged:
 schema:
   config_dir: match(^\/(config|share))
 stage: experimental
+init: false
