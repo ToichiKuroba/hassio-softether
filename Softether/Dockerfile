@@ -6,9 +6,9 @@ RUN apt-get update \
         gcc \
         wget \
         make \
-    && wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.38-9760-rtm/softether-vpnserver-v4.38-9760-rtm-2021.08.17-linux-arm_eabi-32bit.tar.gz \
-    && tar xzvf softether-vpnserver-v4.38-9760-rtm-2021.08.17-linux-arm_eabi-32bit.tar.gz  \
-	&& rm softether-vpnserver-v4.38-9760-rtm-2021.08.17-linux-arm_eabi-32bit.tar.gz \
+    && wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.39-9772-beta/softether-vpnserver-v4.39-9772-beta-2022.04.26-linux-arm64-64bit.tar.gz\
+    && tar xzvf softether-vpnserver-v4.39-9772-beta-2022.04.26-linux-arm64-64bit.tar.gz \
+    && rm softether-vpnserver-v4.39-9772-beta-2022.04.26-linux-arm64-64bit.tar.gz \
     && cd /vpnserver \
     && make 
 

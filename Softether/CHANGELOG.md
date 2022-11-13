@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.4.1
+### Changed
+- Base image to Debian Base Images (https://github.com/hassio-addons/addon-debian-base)
+- SoftEtherVPN to v4.39-9772-beta
+
 ## 0.4.0
 ### Fixed 
 - Addon could not start due to https://developers.home-assistant.io/blog/2022/05/12/s6-overlay-base-images/
