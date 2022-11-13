@@ -15,4 +15,6 @@ RUN apt-get update \
 # Copy root filesystem
 COPY rootfs /
 
+RUN chmod 777 /etc/cont-init.d/02-softeter.sh
+
 CMD [ "/vpnserver/vpnserver", "execsvc" ]

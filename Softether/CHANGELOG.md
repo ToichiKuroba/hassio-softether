@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.4.2
+### Fixed
+- Permission denied at startup
+
 ## 0.4.1
 ### Changed
 - Base image to Debian Base Images (https://github.com/hassio-addons/addon-debian-base)
