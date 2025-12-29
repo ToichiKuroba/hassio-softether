@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.4.3
+### Changed
+- Updated base Image to debian-base:9.1.0
+- Updated SoftEtherVPN to v4.44-9807-rtm
+
 ## 0.4.2
 ### Fixed
 - Permission denied at startup
