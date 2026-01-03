@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.4.4
+### Added 
+- iptables to the container
+
 ## 0.4.3
 ### Changed
 - Updated base Image to debian-base:9.1.0
