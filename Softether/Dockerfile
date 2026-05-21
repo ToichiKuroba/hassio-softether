@@ -1,6 +1,7 @@
 ARG BUILD_FROM
-ARG BUILD_ARCH
 FROM $BUILD_FROM
+
+ARG BUILD_ARCH
 
 RUN apt-get update \
     && apt-get install -y \
