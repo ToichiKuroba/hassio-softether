@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.4.5
+### Added
+- aarch64 (Raspberry Pi 4, 64-bit) support
+
+### Fixed
+- Dockerfile now selects the correct SoftEther binary per architecture (aarch64, amd64, armv7, armhf, i386)
+
 ## 0.4.4
 ### Added 
 - iptables to the container

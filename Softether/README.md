@@ -3,6 +3,7 @@
 A Home Assistant Add-on to run a Softether VPN server. For further Information about SoftEther see https://www.softether.org/.
 
 ![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
 ![Supports armhf Architecture][armhf-shield]
 ![Supports armv7 Architecture][armv7-shield]
 
