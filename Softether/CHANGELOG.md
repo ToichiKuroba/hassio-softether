@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.5.1
+### Removed
+- Deprecated `build.yaml`, the base image is now set directly in the Dockerfile
+
 ## 0.5.0
 ### Changed
 - **Breaking:** Dropped support for armhf, armv7 and i386 (no longer supported by Home Assistant and the Debian base image)

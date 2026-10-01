@@ -9,8 +9,7 @@ Maintainer: Frederick Weimann, Leo Birkner. Upstream-Repo: https://github.com/To
 - `README.md` – Repo-README mit "Add repository"-Badge und Arch-Shields.
 - `Softether/` – das eigentliche Add-on (Slug `soft_ether_vpn_server`):
   - `config.yaml` – Add-on-Manifest (Version, Arch, Optionen, Schema, Rechte).
-  - `build.yaml` – Base-Images pro Arch (`ghcr.io/hassio-addons/debian-base:9.5.0`). Ab debian-base 9.0.0 gibt es nur noch aarch64/amd64.
-  - `Dockerfile` – ein einziger `RUN`: installiert gcc/libc6-dev/make/iptables, lädt per `curl` das SoftEther-Tarball passend zu `BUILD_ARCH` (Version/Datum über `ARG SOFTETHER_VERSION`/`SOFTETHER_DATE`), entpackt nach `/vpnserver`, linkt mit `make` und entfernt die Build-Tools wieder. `CMD ["/vpnserver/vpnserver", "execsvc"]`.
+  - `Dockerfile` – Base-Image direkt per `FROM ghcr.io/hassio-addons/debian-base:9.5.0` (Multi-Arch-Image; `build.yaml` ist seit Supervisor 2026.04 veraltet und wurde entfernt, `BUILD_FROM` wird nicht mehr übergeben, `BUILD_ARCH` schon). Ein einziger `RUN`: installiert gcc/libc6-dev/make/iptables, lädt per `curl` das SoftEther-Tarball passend zu `BUILD_ARCH` (Version/Datum über `ARG SOFTETHER_VERSION`/`SOFTETHER_DATE`), entpackt nach `/vpnserver`, linkt mit `make` und entfernt die Build-Tools wieder. `CMD ["/vpnserver/vpnserver", "execsvc"]`.
   - `rootfs/etc/cont-init.d/02-softether.sh` – s6 cont-init-Skript (bashio): legt `config_dir` an, migriert alte Configs (aus `/data/vpnserver` bzw. `/homeassistant/...` von Versionen < 0.5.0), legt leere `vpn_server.config` an und symlinkt sie (`ln -sf`) nach `/vpnserver/vpn_server.config`.
   - `DOCS.md` – Nutzerdoku (Anzeige im HA-UI), `README.md` – Kurzbeschreibung, `CHANGELOG.md`, `icon.png`, `logo.png`.
 
@@ -40,10 +39,10 @@ Bei Änderungen am Add-on:
 1. `version` in `Softether/config.yaml` erhöhen (SemVer, aktuell `0.5.x`).
 2. Eintrag in `Softether/CHANGELOG.md` ergänzen (Abschnitte `Added` / `Changed` / `Removed` / `Fixed`, neueste Version oben).
 3. Bei SoftEther-Update: `ARG SOFTETHER_VERSION` und `ARG SOFTETHER_DATE` im `Dockerfile` anpassen. Stand 2026-10: v4.44-9807-rtm ist die neueste Stable-Version.
-4. Bei Arch-Änderungen: `config.yaml` `arch`, `build.yaml`, `Dockerfile`-case und Shields in beiden READMEs synchron halten.
+4. Bei Arch-Änderungen: `config.yaml` `arch`, `Dockerfile`-case und Shields in beiden READMEs synchron halten. debian-base gibt es ab 9.0.0 nur noch für aarch64/amd64.
 
 Es gibt kein CI und keine Tests. Lokaler Testbuild (Docker Desktop muss laufen):
-`docker build --build-arg BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.5.0 --build-arg BUILD_ARCH=amd64 -t softether-test Softether`
+`docker build --build-arg BUILD_ARCH=amd64 -t softether-test Softether`
 
 ## Offene Punkte
 

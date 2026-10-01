@@ -1,5 +1,4 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM ghcr.io/hassio-addons/debian-base:9.5.0
 
 ARG BUILD_ARCH
 ARG SOFTETHER_VERSION=v4.44-9807-rtm
