@@ -17,14 +17,22 @@ To configure the SoftEther VPN Server please use the [SoftEther VPN Server Manag
 The Add-on configuration in Home Assistent is quiet simple:
 
 ```yaml
-config_dir: /config/softether
+config_dir: /config
 ```
 
 ### Option: `config_dir`
 
-The directory to store the the config.
+The directory to store the `vpn_server.config` in. It has to be located below `/config` or `/share`.
 
-By default this Value is set to:`/config/softether`
+- `/config` is the add-on's own configuration folder. On the host (e.g. via the Samba or SSH add-on) it can be found at `/addon_configs/<repository-id>_soft_ether_vpn_server`.
+- `/share` is the shared Home Assistant `share` folder.
+
+By default this value is set to: `/config`
+
+### Upgrading from versions < 0.5.0
+
+Up to version 0.4.x `/config` pointed to the Home Assistant configuration folder, so the configuration was stored in `/homeassistant/softether` by default.
+Since 0.5.0 `/config` is the add-on's own configuration folder. On the first start the existing `vpn_server.config` is copied automatically from the old location. The old file is kept and can be deleted manually afterwards.
 
 ## How to use
 

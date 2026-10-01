@@ -1,6 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.5.0
+### Changed
+- **Breaking:** Dropped support for armhf, armv7 and i386 (no longer supported by Home Assistant and the Debian base image)
+- **Breaking:** `/config` is now the add-on's own configuration folder (`addon_config`) instead of the Home Assistant configuration folder. Existing configurations are migrated automatically on first start.
+- Default `config_dir` changed to `/config`
+- Updated base image to debian-base:9.5.0
+- Build tools are removed from the image after building
+- Renamed init script to `02-softether.sh`
+
+### Removed
+- Deprecated `codenotary` settings
+
+### Fixed
+- Download URL of the SoftEther binary for amd64
+- Add-on failed to start if the config symlink already existed
+- Config directories with nested or space-containing paths could not be created
+
+## 0.4.6
+### Fixed
+- Order of `ARG` declarations in the Dockerfile
+
 ## 0.4.5
 ### Added
 - aarch64 (Raspberry Pi 4, 64-bit) support
