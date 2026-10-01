@@ -16,12 +16,22 @@ if [[ -d /data/vpnserver ]]; then
 fi
 
 # Migrate configuration from versions < 0.5.0, where /config was the Home Assistant config folder
-if [[ ! -f "${config_file}" && "${config_dir}" == /config* ]]; then
-  legacy_file="/homeassistant${config_dir#/config}/vpn_server.config"
-  if [[ -f "${legacy_file}" ]]; then
-    bashio::log.info "Migrating configuration from ${legacy_file}"
-    cp "${legacy_file}" "${config_file}"
-  fi
+migration_marker=/data/.migrated_homeassistant_config
+if [[ ! -f "${migration_marker}" ]]; then
+  for legacy_file in \
+    "/homeassistant${config_dir#/config}/vpn_server.config" \
+    /homeassistant/softether/vpn_server.config; do
+    if [[ "${config_dir}" == /config* && -s "${legacy_file}" ]]; then
+      if [[ -s "${config_file}" ]]; then
+        bashio::log.info "Backing up existing configuration to ${config_file}.pre-migration"
+        cp -f "${config_file}" "${config_file}.pre-migration"
+      fi
+      bashio::log.info "Migrating configuration from ${legacy_file}"
+      cp -f "${legacy_file}" "${config_file}"
+      break
+    fi
+  done
+  touch "${migration_marker}"
 fi
 
 if [[ ! -f "${config_file}" ]]; then

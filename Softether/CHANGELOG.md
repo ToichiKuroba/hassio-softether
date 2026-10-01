@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.5.2
+### Fixed
+- Configuration from versions < 0.5.0 was not migrated when the default `config_dir` was used. The migration now also checks `/homeassistant/softether` and runs once, even if a new configuration was already created. A replaced configuration is kept as `vpn_server.config.pre-migration`.
+
 ## 0.5.1
 ### Removed
 - Deprecated `build.yaml`, the base image is now set directly in the Dockerfile
